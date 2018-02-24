@@ -1,11 +1,4 @@
-/******************************************************************************
-
-                            Online C Compiler.
-                Code, Compile, Run and Debug C program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
+// Solution for practice.geeksforgeeks.org/problems/kadanes-algorithm/
 #include <stdio.h>
 #include<math.h>
 void printArr();
@@ -13,25 +6,38 @@ int kandaneAlgorithm(int *Arr, int len);
 int main()
 {
     
-   int T, size;
-  //  scanf( "%d", &T);
-//    for(int j = 0; j<T; j++){
-        
+    int T, size;
+    // Scan the numebr of test cases
+    scanf( "%d", &T);
+    // Store results dynamically in the results array
+    int result[T];
+    // Scan size, elements of each test case array
+    for(int j = 0; j<T; j++){
         scanf("%d", &size);
         int numbers[size];
         for(int k=0;k<size;k++){
             scanf("%d", &numbers[k]);
         }
+        
         int len = sizeof(numbers)/sizeof(numbers[0]);   
-        printf("Array size is: %d", len); 
-        printArr(numbers, len);
-        kandaneAlgorithm(numbers, len);
-  //  }
-  
-    return 0;
+        // Test if input is correct
+        //printf("Array size is: %d", len); 
+        //printArr(numbers, len);
+        result[j] = kandaneAlgorithm(numbers, len);
+    }
+      
+        printArr(result, T);      
+        return 0;
 }
+
+void printArr(int *Arr, int len){
+   for(int i=0; i<len;i++){
+        printf("\n%d", Arr[i]);
+   }
+}
+
 /*
-Initialize:
+Algorithm: Initialize:
     max_so_far = 0
     max_ending_here = 0
 
@@ -42,11 +48,6 @@ Loop for each element of the array
   (c) if(max_so_far < max_ending_here)
             max_so_far = max_ending_here
 return max_so_far*/
-void printArr(int *Arr, int len){
-   for(int i=0; i<len;i++){
-        printf("\n%d", Arr[i]);
-   }
-}
 
 int kandaneAlgorithm(int *Arr, int len){
     int max_sum =0, max_temp=0,  maxim =-1;
