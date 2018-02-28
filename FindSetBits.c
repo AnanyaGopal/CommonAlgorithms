@@ -1,4 +1,6 @@
 #include <stdio.h>
+int findSetBits(int n);
+
 
 int main()
 {
